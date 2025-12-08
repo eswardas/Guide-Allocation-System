@@ -40,6 +40,7 @@
                 padding: 40px;
                 z-index: 999999;
                 font-size: 12pt;
+                line-height: 1.6;
             }
             /* Ensure text is black for printers */
             h1, h2, h3, h4, p, li, strong, b, span, div {
@@ -383,6 +384,7 @@
             ]
         };
 
+        // --- PROJECT TOPICS ---
         const baseTopics = [
             { t: "AI-Driven Early Disease Detection", cat: "ai", core: "detecting diseases like pneumonia from X-rays" },
             { t: "Smart Traffic Control System", cat: "ai", core: "managing traffic lights based on vehicle density" },
@@ -401,12 +403,71 @@
             { t: "Automated Attendance System", cat: "ai", core: "using face recognition to mark attendance" }
         ];
 
+        // --- SEMINAR TOPICS ---
+        const seminarTopics = [
+            { t: "5G Technology and Edge Computing", cat: "iot", core: "analyzing low-latency network architectures" },
+            { t: "The Future of Quantum Cryptography", cat: "security", core: "investigating post-quantum security protocols" },
+            { t: "Ethical AI: Bias in Machine Learning", cat: "ai", core: "studying fairness and transparency in algorithms" },
+            { t: "Green Cloud Computing Strategies", cat: "web", core: "optimizing data centers for energy efficiency" },
+            { t: "Blockchain in Supply Chain Management", cat: "blockchain", core: "enhancing transparency in logistics" },
+            { t: "Deepfakes and Digital Forensics", cat: "ai", core: "detecting synthetic media manipulation" },
+            { t: "Neuromorphic Computing Architectures", cat: "ai", core: "mimicking biological neural networks in hardware" },
+            { t: "Serverless Architecture Patterns", cat: "web", core: "evaluating function-as-a-service models" },
+            { t: "Security Challenges in IoT Ecosystems", cat: "iot", core: "identifying vulnerabilities in connected devices" },
+            { t: "Evolution of Web 3.0", cat: "web", core: "decentralizing the future internet" }
+        ];
+
         function expandContent(topic, type, time) {
             const r = (arr) => arr[Math.floor(Math.random() * arr.length)];
             const stack = techStacks[topic.cat] || "Standard Full Stack";
             
-            // PURE HTML for Report
-            const fullHtml = `
+            let fullHtml = '';
+            
+            if (type === 'Seminar') {
+                // SEMINAR LOGIC: Extended Abstract / Long Form Text
+                fullHtml = `
+                <div style="font-family: 'Times New Roman', serif; color: #000; line-height: 1.8; font-size: 12pt;">
+                    <h1 style="font-size: 26px; font-weight: bold; text-align: center; margin-bottom: 30px; text-transform: uppercase;">${topic.t}</h1>
+                    
+                    <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px; text-transform: uppercase;">Abstract</h3>
+                    <p style="text-align: justify; margin-bottom: 20px;">
+                        ${r(phraseBank.openers)} The seminar topic titled "<strong>${topic.t}</strong>" explores the critical dimensions of ${topic.core}. In the current technological era, understanding this concept is pivotal for future advancements. ${r(phraseBank.problems)} This report aims to provide a comprehensive overview of the underlying mechanisms, potential applications, and the future trajectory of this domain.
+                    </p>
+                    <p style="text-align: justify; margin-bottom: 20px;">
+                        As we delve deeper into the 21st century, the relevance of ${topic.cat.toUpperCase()} technologies cannot be overstated. This seminar investigates how ${topic.core} serves as a cornerstone for innovation. By analyzing recent trends and academic literature, we observe a significant shift towards more intelligent, efficient, and scalable solutions. The study highlights the theoretical underpinnings that make this technology feasible and the practical constraints that researchers are currently striving to overcome.
+                    </p>
+
+                    <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px; text-transform: uppercase;">Detailed Analysis</h3>
+                    <p style="text-align: justify; margin-bottom: 20px;">
+                        The core principle of this topic revolves around optimizing performance and enhancing capability. ${r(phraseBank.proposed)} Unlike traditional approaches, which often suffer from rigidity, the modern paradigm of ${topic.t} offers flexibility and adaptability. Key research indicates that integrating these concepts leads to substantial improvements in system reliability and user satisfaction.
+                    </p>
+                    <p style="text-align: justify; margin-bottom: 20px;">
+                        Furthermore, the impact extends beyond mere technical specifications. It influences economic models, social interactions, and regulatory frameworks. For instance, in the context of ${topic.cat}, the deployment of such systems requires a careful balance between efficiency and ethical considerations. The seminar further explores these socio-technical implications, providing a holistic view of the subject matter.
+                    </p>
+
+                    <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px; text-transform: uppercase;">Key Applications & Future Scope</h3>
+                    <p style="text-align: justify; margin-bottom: 15px;">The theoretical concepts discussed have wide-ranging applications:</p>
+                    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px;">
+                        <li>Advancements in <strong>${topic.cat.toUpperCase()}</strong> infrastructure.</li>
+                        <li>Optimization of existing legacy systems for better performance.</li>
+                        <li>Development of next-generation frameworks supporting ${topic.core}.</li>
+                        <li>Research opportunities in predictive analysis and automation.</li>
+                    </ul>
+
+                    <h3 style="font-size: 14pt; font-weight: bold; margin-bottom: 10px; text-transform: uppercase;">Conclusion</h3>
+                    <p style="text-align: justify; margin-bottom: 20px;">
+                        ${r(phraseBank.conclusion)} The exploration of <strong>${topic.t}</strong> reveals a landscape rich with potential and challenges. As technology continues to evolve, staying abreast of these developments is essential for academic and professional growth. This seminar concludes that while significant progress has been made, the journey towards fully realizing the potential of ${topic.core} is ongoing and requires sustained research efforts.
+                    </p>
+                    
+                    <br><br>
+                    <div style="text-align: center; border-top: 1px solid #000; padding-top: 10px; font-size: 10pt;">
+                        <i>Seminar Report Generated by SURA THE TOPIC GOD</i>
+                    </div>
+                </div>
+                `;
+            } else {
+                // PROJECT LOGIC (Existing)
+                fullHtml = `
                 <div style="font-family: 'Times New Roman', serif; color: #000; line-height: 1.6;">
                     <h1 style="font-size: 28px; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px;">${topic.t}</h1>
                     
@@ -441,11 +502,12 @@
                     <br><br>
                     <p style="text-align: center; font-size: 12px; color: #555; border-top: 1px solid #ccc; padding-top: 10px;">Generated by SURA THE TOPIC GOD</p>
                 </div>
-            `;
+                `;
+            }
 
             return {
                 title: topic.t,
-                abstract: `${r(phraseBank.openers)} This project focuses on ${topic.core}.`, 
+                abstract: `${r(phraseBank.openers)} This ${type.toLowerCase()} focuses on ${topic.core}.`, 
                 tech: stack,
                 fullHtml: fullHtml 
             };
@@ -468,12 +530,15 @@
             const type = document.getElementById('topicType').value;
 
             setTimeout(() => {
-                let pool = baseTopics.filter(t => interests.includes(t.cat) || interests.includes(t.core.split(' ')[0]) || interests.includes('')); 
-                const specific = baseTopics.filter(t => interests.includes(t.cat));
+                // Determine Source Array based on Selection
+                let sourceArray = (type === 'Seminar') ? seminarTopics : baseTopics;
+
+                let pool = sourceArray.filter(t => interests.includes(t.cat) || interests.includes(t.core.split(' ')[0]) || interests.includes('')); 
+                const specific = sourceArray.filter(t => interests.includes(t.cat));
                 if(specific.length > 0) pool = specific;
 
                 while(pool.length < 5) {
-                    const random = baseTopics[Math.floor(Math.random() * baseTopics.length)];
+                    const random = sourceArray[Math.floor(Math.random() * sourceArray.length)];
                     if(!pool.includes(random)) pool.push(random);
                 }
 
