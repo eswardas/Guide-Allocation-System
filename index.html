@@ -200,7 +200,7 @@
             "ANAN P ABBAS",          // 5
             "ANJU E",                // 6
             "ANSILA NV",             // 7
-            "ATHILA ASHRAF",         // 8
+            "ADHILA ASHRAF",         // 8
             "AYISHA RANDHA",         // 9
             "BASIM SHEBIN",          // 10
             "DEVIKA S",              // 11
@@ -270,7 +270,7 @@
             };
         }).filter(s => s.roll !== EXCLUDED_ROLL);
 
-        const HAK_COUNT = 6;
+        const KPB_COUNT = 10;
         const STANDARD_COUNT = 7;
 
         let currentAllocation = [];
@@ -310,16 +310,13 @@
                     }
                 };
 
-                // Assign HOD (Hyderali K)
-                assignToGuide("Hyderali K", HAK_COUNT);
+                // Assign Balachandran K P (KPB)
+                assignToGuide("Balachandran K P", KPB_COUNT);
                 
                 // Assign Standard Count to others
-                GUIDES.filter(t => t !== "Hyderali K" && t !== "Balachandran K P").forEach(guideName => {
+                GUIDES.filter(t => t !== "Balachandran K P").forEach(guideName => {
                     assignToGuide(guideName, STANDARD_COUNT);
                 });
-
-                // Assign Remainder to Balachandran K P
-                assignToGuide("Balachandran K P", null);
 
                 // Sort by Roll No for display
                 newAllocation.forEach(group => group.students.sort((a, b) => a.roll - b.roll));
@@ -514,4 +511,3 @@
     </script>
 </body>
 </html>
-
